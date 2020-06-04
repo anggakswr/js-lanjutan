@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>destructuring function</title>
+</head>
+
+<body>
+
+  <ul>
+    <li class="nama">Angga</li>
+    <li class="nama">Doni</li>
+    <li class="nama">Mamah</li>
+  </ul>
+
+  <script type="text/javascript">
+    // deklarasi array
+    const mhs = ['Angga','Anjel','Jere'];
+
+    // for
+    for (var i = 0; i < mhs.length; i++) {
+      console.log(mhs[i]); // output: Angga Anjel Jere
+    }
+
+    // forEach
+    mhs.forEach(m => console.log(m)); // output: Angga Anjel Jere
+
+    // forof
+    for (const m of mhs) {
+      console.log(m); // output: Angga Anjel Jere
+    }
+
+    // forof bs dipakai utk looping string
+    const nama = 'Anjel';
+    for (const n of nama) {
+      console.log(n); // output: A n j e l
+    }
+
+    // cara menampilkan indeks di forEach & forof
+    mhs.forEach((m, i) => {
+      console.log(`${m} adalah mahasiswa ke-${i+1}`); // Angga adalah mahasiswa ke-1, dst
+    });
+
+    for (const [i,m] of mhs.entries()) { // method entries() menampilkan [0, 'Angga']
+      console.log(`${m} adalah mahasiswa ke-${i+1}`); // Angga adalah mahasiswa ke-1, dst
+    }
+
+    // looping nodelist
+    const li = document.querySelectorAll('.nama');
+    // console.log(li);
+    li.forEach(l => console.log(l.innerHTML)); // output: Angga Doni Mamah
+    for (l of li) {
+      console.log(l.innerHTML); // output: Angga Doni Mamah
+    }
+
+    // looping arguments
+    function jumlahSmua() {
+      console.log(arguments); // output: isiny mirip array [1,2,3,4,5] tp bkn array, arguments adl tempat default utk menyimpan data yg tdk ditangkap parameter
+
+      const pkreduce = [1,2,3,4,5].reduce((cont,cur) => cont + cur);
+      console.log(pkreduce); // menjumlahkan array yg dibentuk dr arguments (tp tulisan argumentsny gada ya, cm diganti sm [1,2,3,4,5]), ini berlaku jg utk forEach
+
+      let jumlah = 0;
+      for (a of arguments) { // klo pk forof tdk perlu melakukan destructuring
+        jumlah += a;
+      }
+      console.log(jumlah);
+    }
+    console.log(jumlahSmua(1,2,3,4,5));
+
+    // forin bs looping object
+    const playboy = {
+      nama: 'Angga',
+      pacar: 7,
+      alamat: 'Semarang'
+    }
+    for (p in playboy) {
+      console.log(p); // output: nama pacar alamat
+      console.log(playboy[p]); // output: Angga 7 Semarang
+    }
+  </script>
+</body>
+
+</html>

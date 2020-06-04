@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rest parameter</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // rest parameter mengubah kumpulan parameter di sebuah function menjadi array
+    // rest parameter itu utk menampung parameter pd sbuah function.. rest parameter bs menampung parameter sejumlah tak terbatas
+    function f(a,b, ...arr) {
+      console.log(a); // output: 1
+      console.log(b); // output: 2
+      console.log(arr); // output: Array(3) [ 3, 4, 5 ]
+      return `a = ${a}, b = ${b}, arr = ${arr}`; // output: a = 1, b = 2, arr = 3,4,5
+    }
+
+    console.log(f(1,2,3,4,5));
+
+    // sumAngka
+    function sumAngka(...angka) {
+      return angka.reduce((acc,cur) => acc + cur);
+    }
+    console.log(sumAngka(1,2,3,4,5));
+
+    // array destructuring
+    const kelompok1 = ['Angga','Doni','Septi','Tili'];
+    const [ketua,wakil, ...anggota] = kelompok1;
+    console.log(ketua); // output: Angga
+    console.log(anggota); // output: Array [ "Septi", "Tili" ]
+
+    // object destructuring
+    const kelompok2 = {
+      pm: 'Sandhika',
+      frontend: 'Jere',
+      backend: 'Shiana',
+      devops: 'Doni'
+    }
+    const {pm, ...tim} = kelompok2;
+    console.log(tim); // output: Object { frontend: "Jere", backend: "Shiana", devops: "Doni" }
+
+    // filtering
+    function filterBy(type, ...values) {
+      return values.filter(v => typeof v === type); // filter adl method bawaan
+    }
+    console.log(filterBy('number',1,2,'Angga',false,'Doni',true,1.2)); // output: Array [ 1, 2, 1.2 ]
+    console.log(filterBy('string',1,2,'Angga',false,'Doni',true)); // output: Array [ "Angga", "Doni" ]
+    console.log(filterBy('boolean',1,2,'Angga',false,'Doni',true)); // output: Array [ false, true ]
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Cara Membuat Object pada JavaScript
+
+      // 1. Object Literal (tdk efektif utk object yg byk)
+      let prajurit1 = {
+        nama: 'Angga',
+        energi: 10,
+        makan: function(porsi) {
+          this.energi += porsi;
+          return `Halo ${this.nama}, selamat makan!`;
+        }
+      }
+
+      // 2. Function Declaration
+      function benteng(nama, energi) {
+        let prajurit = {};
+        prajurit.nama = nama;
+        prajurit.energi = energi;
+
+        prajurit.makan = function(porsi) {
+          this.energi += porsi;
+          return `Halo ${this.nama}, selamat makan!`;
+        }
+        prajurit.main = function(jam) {
+          this.energi -= jam;
+          return `Halo ${this.nama}, selamat bermain!`;
+        }
+
+        return prajurit;
+      }
+
+      let prajurit2 = benteng('Doni',20);
+
+      // 3. Constructor Function
+      function istana(nama, energi) {
+        this.nama = nama;
+        this.energi = energi;
+
+        this.makan = function(porsi) {
+          this.energi += porsi;
+          return `Halo ${this.nama}, selamat makan!`;
+        }
+        this.main = function(jam) {
+          this.energi -= jam;
+          return `Halo ${this.nama}, selamat bermain!`;
+        }
+      }
+
+      let prajurit3 = new istana('Doni',20);
+    </script>
+  </body>
+</html>

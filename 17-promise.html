@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>promise</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // promise = object yg merepresentasikan keberhasilan / kegagalan sebuah event yg asynchronous di masa dpn
+      // hasilny : terpenuhi & ingkar
+      // states : fulfilled & rejected & pending
+      // callback : resolve (janji terpenuhi) & reject (tdk terpenuhi) & finally (waktu tunggu selesai)
+      // aksi : then (if janji terpenuhi lakukan sesuatu) & catch (if janji tdk terpenuhi lakukan sesuatu)
+      // then akan menjalan resolve, catch akan menjalankan reject
+
+      // contoh 1
+      let ditepati1 = true;
+      const janji1 = new Promise((resolve,reject) => {
+        if (ditepati1) {
+          resolve('Janji telah ditepati1!');
+        } else {
+          reject('Ingkar janji!');
+        }
+      });
+
+      janji1
+        .then(response => console.log('janji1 : ' + response))
+        .catch(response => console.log('janji1 : ' + response));
+        // output: janji1 : Janji telah ditepati1!
+
+      // contoh 2
+      let ditepati2 = true;
+      const janji2 = new Promise((resolve, reject) => {
+        if (ditepati2) {
+          setTimeout(() => {
+            resolve('Ditepati2 setelah beberapa waktu!');
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            resolve('Tidak ditepati2 setelah beberapa waktu!');
+          }, 2000);
+        }
+      });
+
+      console.log('mulai');
+      janji2
+        .finally(() => console.log('selesai menunggu!'))
+        .then(response => console.log('janji2 : ' + response))
+        .catch(response => console.log('janji2 : ' + response));
+      console.log('selesai');
+        // output:
+        // mulai
+        // selesai
+        // selesai menunggu!
+        // janji2 : Ditepati2 setelah beberapa waktu!
+
+      // Promise.all utk menampilkan smua hasil api sekaligus
+      Promise.all([ditepati1,ditepati2])
+        // .then(response => console.log(response)); // output: Array [ true, true ]
+        .then(response => {
+          const [ditepati1,ditepati2] = response;
+          console.log(ditepati1); // output: true
+          console.log(ditepati2); // output: true
+        });
+    </script>
+  </body>
+</html>

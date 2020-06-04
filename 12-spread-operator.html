@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>spread operator</title>
+</head>
+
+<style media="screen">
+  h1 span {
+    font-family: arial;
+    display: inline-block; /* ini spy bs di transform */
+    transition: .3s;
+  }
+
+  h1 span:hover {
+    transform: scale(2) translateY(-10px);
+  }
+</style>
+
+<body>
+
+  <ul>
+    <li>Angga</li>
+    <li>Doni</li>
+    <li>Jere</li>
+  </ul>
+
+  <h1>Mantap Bosque</h1>
+
+  <script type="text/javascript">
+    // deklarasi array
+    const mhs = ['Angga','Anjel','Jere'];
+
+    // spread operator
+    console.log(...mhs); // outputny string: 'Angga Anjel Jere'
+    console.log(...mhs[0]); // outputny string: 'A n g g a'
+
+    // menggabungkan 2 array
+    const dosen = ['Ana','Yusuf','Sinta'];
+    const orang = [...mhs,...dosen];
+    console.log(orang); // outputny berisi isi array mhs & isi array dosen (Array(6) [ "Angga", "Anjel", "Jere", "Ana", "Yusuf", "Sinta" ])
+
+    // mengcopy array
+    const mhs1 = [...mhs]; // isi array mhs1 disini sama dg isi array mhs
+    mhs1[0] = 'Doni'; // menimpa isi mhs1, tp tdk menimpa isi mhs
+    console.log(mhs1); // output: Array(3) [ "Doni", "Anjel", "Jere" ] (indeks ke 0 tertimpa)
+    console.log(mhs); // output: Array(3) [ "Angga", "Anjel", "Jere" ]
+
+    // ubah nodelist jd array (bs pk for, tp lbh mudah klo pk map)
+    const li = document.querySelectorAll('li');
+    // const mhs2 = [];
+    // console.log(li);
+    // for (let i = 0; i < li.length; i++) {
+    //   mhs2.push(li[i].innerHTML);
+    // }
+    const mhs2 = [...li].map(m => m.innerHTML); // klo mau pk map, li hrs dijadikan array dlu
+    console.log(mhs2); // output: Array(3) [ "Angga", "Doni", "Jere" ]
+
+    // animasi h1
+    const h1 = document.getElementsByTagName('h1')[0];
+    const hurufh1 = [...h1.innerHTML].map(h => `<span>${h}</span>`).join(''); // tiap huruf h1 dibungkus dg elemen span
+    console.log(hurufh1);
+    h1.innerHTML = hurufh1;
+  </script>
+</body>
+
+</html>

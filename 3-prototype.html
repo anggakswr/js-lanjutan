@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Cara Membuat Object pada JavaScript
+
+      // 1. Object Literal (tdk efektif utk object yg byk)
+      let prajurit1 = {
+        nama: 'Angga',
+        energi: 10,
+        makan: function(porsi) {
+          this.energi += porsi;
+          return `Halo ${this.nama}, selamat makan!`;
+        }
+      }
+
+      // 2. Function Declaration
+      const methodPrajurit = { // pemisahan kumpulan method makan & main, adl spy method tsb tdk dideklarasikan berulang kali (manajemen memori)
+        makan: function(porsi) {
+          this.energi += porsi;
+          return `Halo ${this.nama}, selamat makan!`;
+        },
+        main: function(jam) {
+          this.energi -= jam;
+          return `Halo ${this.nama}, selamat bermain!`;
+        }
+      }
+
+      function benteng(nama, energi) {
+        let prajurit = Object.create(methodPrajurit); // fungsi Object.create() = memasukkan properti & method dr object methodPrajurit
+        prajurit.nama = nama;
+        prajurit.energi = energi;
+        // prajurit.makan = methodPrajurit.makan;
+        // prajurit.main = methodPrajurit.main;
+        // dua baris di atas di ganti oleh baris 34, menggunakan Object.create()
+
+        return prajurit;
+      }
+
+      let prajurit2 = benteng('Doni',20);
+
+      // 3. Constructor Function
+      function istana(nama, energi) {
+        // let this = Object.create(Mahasiswa.prototype); (terjadi di blkg layar)
+        this.nama = nama;
+        this.energi = energi;
+
+        // return this; (terjadi di blkg layar)
+      }
+
+      istana.prototype.makan = function(porsi) {
+        this.energi += porsi;
+        return `Halo ${this.nama}, selamat makan!`;
+      }
+      istana.prototype.main = function(jam) {
+        this.energi -= jam;
+        return `Halo ${this.nama}, selamat bermain!`;
+      }
+
+      let prajurit3 = new istana('Doni',20);
+
+      // 4. Membuat Object Menggunakan Class (mirip Constructor Function)
+      class Prajurit {
+        constructor(nama, energi) {
+          this.nama = nama;
+          this.energi = energi;
+        }
+
+        makan(porsi) {
+          this.energi += porsi;
+          return `Halo ${this.nama}, selamat makan!`;
+        }
+        main(jam) {
+          this.energi -= jam;
+          return `Halo ${this.nama}, selamat bermain!`;
+        }
+      }
+    </script>
+  </body>
+</html>

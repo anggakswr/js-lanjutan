@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Latihan JS</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // function biasa
+      function tampilNama0(nama0) {
+        return `Halo ${nama0}`;
+      }
+      console.log(tampilNama0('Anjel'));
+
+      // arrow function
+      const tampilNama1 = (nama1) => { return `Halo ${nama1}`; }
+      console.log(tampilNama1('Doni'));
+
+      // implisit return
+      const tampilNama2 = nama2 => `Halo ${nama2}`;
+      console.log(tampilNama2('Angga'));
+
+      // implisit return tanpa parameter
+      const tampilNama3 = () => `Halo Jere`;
+      console.log(tampilNama3());
+    </script>
+  </body>
+</html>

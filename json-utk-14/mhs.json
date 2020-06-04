@@ -1,0 +1,22 @@
+{
+  "mhs": [
+    {
+      "nama": "Angga",
+      "umur": 21,
+      "pekerjaan": "Programmer",
+      "lulus": true
+    },
+    {
+      "nama": "Doni",
+      "umur": 19,
+      "pekerjaan": "Pengangguran",
+      "lulus": false
+    },
+    {
+      "nama": "Alwan",
+      "umur": 19,
+      "pekerjaan": "Gak Jelas",
+      "lulus": true
+    }
+  ]
+}

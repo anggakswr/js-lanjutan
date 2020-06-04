@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>closure</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // closure
+    function ucapkanSalam(waktu) {
+      return function (nama) {
+        return `Halo ${nama}, selamat ${waktu}.`;
+        // console.log(`Halo ${nama}, selamat ${waktu}.`);
+      }
+    }
+
+    let selamatPagi = ucapkanSalam('Pagi');
+    console.dir(selamatPagi()); // jika selamatPagi tdk diberi 'nama', maka function (nama) akan tetap berjalan karena waktu 'Pagi' tersimpan di closure
+
+    // contoh closure yg lain
+    let add = (function () {
+      let counter = 0;
+      return function () {
+        return ++counter;
+      }
+    })();
+
+    counter = 100; // pendeklarasian counter = 100 ini tdk akan mengganggu function di variabel add krn yg dihitung di variabel add adl counter = 0 yg tersimpan di closure
+
+    console.log(add());
+    console.log(add());
+    console.log(add());
+    console.log(add());
+    console.log(add());
+  </script>
+</body>
+
+</html>

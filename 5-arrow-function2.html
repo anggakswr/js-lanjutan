@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Latihan JS</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const mhs1 = {
+        nama: 'Angga',
+        umur: 21,
+        sayHello: function () {
+          // function ini tdk bs diubah jd arrow function, krn this tdk ada di function ini
+          return `Halo nama saya ${this.nama}, umur saya ${this.umur}.`;
+        }
+      }
+    </script>
+  </body>
+</html>

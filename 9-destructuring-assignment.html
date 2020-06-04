@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>destructuring assignment</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // destructuring assignment
+    const nama = ['Angga','Jere','Anjel'];
+    const [a,b,c] = nama;
+    console.log(c); // output: Anjel
+
+    // return value pada function
+    function coba() {
+      return [1,2];
+    }
+    const [x,y] = coba();
+    console.log(y); // output: 2
+
+    // rest parameter (jika kita tdk tau isi array ada brp)
+    const [p, ...isi] = [1,2,3,4,5,6,7];
+    console.log(p); // output: 1
+    console.log(isi); // output: array [2,3,4,5,6,7];
+
+    // destructuring object
+    const mhs = {
+      nama_lengkap: 'Kamiswara Angga W.',
+      umur: 21
+    }
+    const {nama_lengkap,umur} = mhs; // object hrs memakai {} & isiny hrs sama dg properti object tsb
+    console.log(nama_lengkap); // output: Kamiswara Angga W.
+
+    // assignment tanpa deklarasi object
+    ({merk,warna} = {merk: 'Toyota', warna: 'Merah'});
+    console.log(merk); // output: Toyota
+
+    // assign ke variabel baru & memberi value default
+    const pacar = {
+      tinggi: 150,
+      berat: 20
+    }
+    const {tinggi: tin, berat: brt, paras = 'cantik'} = pacar;
+    console.log(tin); // output: 150
+    console.log(paras); // output: cantik
+
+    // rest parameter utk object
+    const istri = {
+      sah: true,
+      sejak: 2020,
+      cantik: true,
+      anak: 3
+    }
+    const {sah, ...pernikahan} = istri;
+    console.log(sah); // output: true
+    console.log(pernikahan); // output: object {sejak: 2020, cantik: true, anak: 3}
+
+    // function & object
+    const baju = {
+      id: 123,
+      bahan: 'katun',
+      supplier: 'kaosrobi'
+    }
+    function getBajuId({id}) { // hanya mengambil properti id dr object baju
+      return id;
+    }
+    console.log(getBajuId(baju)); // get baju id by object baju (output: 123)
+  </script>
+</body>
+
+</html>

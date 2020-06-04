@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filter, Map & Reduce</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // array berisi 2 object
+    const lagu = [
+      {
+        judul: 'Tetap Dalam Jiwa',
+        penyanyi: 'Isyana Sarasvati'
+      },
+      {
+        judul: 'Kau Adalah',
+        penyanyi: 'Isyana Sarasvati',
+        feat: 'Rayi Putra'
+      }
+    ];
+
+    const elemen = `
+    <div class="lagu">
+      <ul>
+        ${lagu.map(l => `
+          <li>${l.judul}</li>
+          <ul>
+            <li>Penyanyi : ${l.penyanyi}</li>
+            ${l.feat ? `<li>(feat. ${l.feat})</li>` : ''}
+          </ul>
+        `).join('')}
+      </ul>
+    </div>
+    `;
+
+    document.body.innerHTML = elemen;
+  </script>
+</body>
+
+</html>

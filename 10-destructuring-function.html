@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>destructuring function</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // lat 1
+    function lat1(a,b) {
+      return [a + b, a * b];
+    }
+    const jumlah1 = lat1(2,3);
+    console.log(jumlah1); // output: array [5,6]
+
+    // lat 2
+    const [jumlah, kali] = lat1(2,3);
+    console.log(jumlah); // output: 5
+
+    // lat 3 (urutan tdk hrs urut)
+    function lat3(a,b) {
+      return {
+        tambah: a + b,
+        kurang: a - b,
+        bagi: a - b
+      }
+    }
+    const {bagi, tambah, kurang} = lat3(2,3);
+    console.log(kurang);
+
+    // lat 4 (destructuring object di dlm object)
+    const angga = {
+      umur: 21,
+      fisik: 'tampan',
+      bloon: 'true sih, tp soal yg lain',
+      pacar: {
+        semarang: 1,
+        jakarta: 2,
+        bandung: 5
+      }
+    }
+    function cetakPlayboy({ umur,fisik,pacar: {semarang,jakarta,bandung} }) {
+      return `Nama saya Angga, umur saya ${umur}, saya ${fisik} dan pacar saya ada ${jakarta} di Semarang.`
+    }
+    console.log(cetakPlayboy(angga)); // output: Nama saya Angga, umur saya 21, saya tampan dan pacar saya ada 2 di Semarang.
+  </script>
+</body>
+
+</html>
